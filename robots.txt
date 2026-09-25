@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://haseebabbasali3-cmd.github.io/WebstodioHI/sitemap.xml
