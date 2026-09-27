@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haseeb Abbas | Ultra-Advanced Web Designer & Developer</title>
+    
+    <!-- Security Headers Simulation -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Permanent+Marker&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#080B14',
+                        cardBg: '#101625',
+                        neonCyan: '#00f2fe',
+                        neonMagenta: '#ff007f',
+                        neonBlue: '#4facfe',
+                        accentGreen: '#00e676'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        brush: ['Permanent Marker', 'cursive'],
+                        code: ['Fira Code', 'monospace']
+                    },
+                    boxShadow: {
+                        'neon-cyan': '0 0 25px rgba(0, 242, 254, 0.4)',
+                        'neon-pink': '0 0 25px rgba(255, 0, 127, 0.4)',
+                        'glow-lg': '0 0 50px rgba(0, 242, 254, 0.25)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #080B14;
+            color: #f3f4f6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .light-mode {
+            background-color: #f8fafc !important;
+            color: #0f172a !important;
+        }
+
+        .light-mode .glass-panel {
+            background: rgba(255, 255, 255, 0.85) !important;
+            border-color: rgba(0, 0, 0, 0.1) !important;
+            color: #0f172a !important;
+        }
+
+        .light-mode .text-white {
+            color: #0f172a !important;
+        }
+
+        .light-mode .text-gray-300, .light-mode .text-gray-400 {
+            color: #475569 !important;
+        }
+
+        .light-mode .bg-darkBg {
+            background-color: #e2e8f0 !important;
+        }
+
+        .neon-text-cyan {
+            text-shadow: 0 0 12px rgba(0, 242, 254, 0.6), 0 0 24px rgba(0, 242, 254, 0.3);
+        }
+        
+        .neon-text-pink {
+            text-shadow: 0 0 12px rgba(255, 0, 127, 0.6), 0 0 24px rgba(255, 0, 127, 0.3);
+        }
+
+        .glass-panel {
+            background: rgba(16, 22, 37, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .cyber-border {
+            position: relative;
+            background: linear-gradient(#101625, #101625) padding-box,
+                        linear-gradient(135deg, #00f2fe, #ff007f) border-box;
+            border: 2px solid transparent;
+        }
+
+        .no-select {
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.03); }
+        }
+
+        .animate-pulse-glow {
+            animation: pulseGlow 4s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden selection:bg-neonMagenta selection:text-white no-select" id="body-root">
+
+    <!-- Floating Security Toast Alert -->
+    <div id="security-toast" class="fixed bottom-6 right-6 z-50 transform translate-y-32 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="glass-panel border-l-4 border-neonMagenta text-white px-5 py-4 rounded-xl shadow-2xl flex items-center gap-3">
+            <i class="fa-solid fa-shield-halved text-neonMagenta text-xl"></i>
+            <div>
+                <h5 class="font-bold text-sm">Security Protection Shield</h5>
+                <p id="toast-message" class="text-xs text-gray-300">Action blocked: Content protected.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Floating WhatsApp Action Button -->
+    <a href="https://wa.me/923270325225" target="_blank" class="fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full bg-accentGreen text-black flex items-center justify-center text-3xl shadow-lg hover:scale-110 hover:shadow-neon-cyan transition duration-300">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Top Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-40 glass-panel border-b border-white/10 px-4 lg:px-12 py-3 transition-all duration-300">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#home" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-neonCyan to-neonMagenta flex items-center justify-center font-bold text-black text-xl shadow-neon-cyan">
+                    H
+                </div>
+                <div>
+                    <span class="font-extrabold text-lg tracking-wider block leading-tight text-white group-hover:text-neonCyan transition">HASEEB<span class="text-neonMagenta">.</span>ABBAS</span>
+                    <span class="text-[10px] tracking-widest text-gray-400 uppercase font-code">Web Designer Pro</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <div class="hidden md:flex items-center gap-7 text-xs font-semibold uppercase tracking-wider text-gray-300">
+                <a href="#home" class="hover:text-neonCyan transition">Home</a>
+                <a href="#services" class="hover:text-neonCyan transition">Services</a>
+                <a href="#portfolio" class="hover:text-neonCyan transition">Portfolio</a>
+                <a href="#estimator" class="hover:text-neonCyan transition">Price Estimator</a>
+                <a href="#tools" class="hover:text-neonCyan transition">Client Tools</a>
+                <a href="#faq" class="hover:text-neonCyan transition">FAQs</a>
+                <a href="#contact" class="hover:text-neonCyan transition">Contact</a>
+            </div>
+
+            <!-- Controls (Theme Toggle + Order Button) -->
+            <div class="flex items-center gap-3">
+                <button onclick="toggleTheme()" class="w-10 h-10 rounded-xl glass-panel border border-white/10 flex items-center justify-center text-neonCyan hover:border-neonCyan transition" title="Toggle Theme">
+                    <i class="fa-solid fa-moon text-sm" id="theme-icon"></i>
+                </button>
+                
+                <a href="#contact" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-neonCyan to-neonMagenta text-black font-extrabold text-xs tracking-wider uppercase hover:shadow-neon-pink transition duration-300 transform hover:-translate-y-0.5">
+                    Order Now
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen pt-28 pb-16 px-4 lg:px-12 flex items-center justify-center overflow-hidden">
+        <div class="absolute top-1/4 left-10 w-96 h-96 bg-neonCyan/15 rounded-full filter blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-neonMagenta/15 rounded-full filter blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel border border-neonCyan/30 text-neonCyan text-xs font-semibold tracking-wider uppercase">
+                    <span class="w-2 h-2 rounded-full bg-neonCyan animate-ping"></span>
+                    Modern • Fast • Responsive • SEO Friendly
+                </div>
+
+                <div class="space-y-2">
+                    <h2 class="font-brush text-neonMagenta text-2xl lg:text-3xl rotate-[-2deg] tracking-wide">
+                        Your Vision, My Code
+                    </h2>
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-none">
+                        Professional <br>
+                        <span class="bg-gradient-to-r from-neonCyan via-white to-neonMagenta bg-clip-text text-transparent neon-text-cyan">
+                            WEB DESIGNER
+                        </span>
+                    </h1>
+                </div>
+
+                <p class="text-gray-300 text-base sm:text-lg max-w-2xl font-light">
+                    Turning your business ideas into high-converting modern websites. Specialized in custom React, WordPress, E-Commerce, and high-security web architecture.
+                </p>
+
+                <!-- Animated Experience Counters -->
+                <div class="grid grid-cols-3 gap-4 pt-2">
+                    <div class="glass-panel p-4 rounded-2xl border-l-2 border-neonCyan text-left">
+                        <div class="text-2xl font-extrabold text-neonCyan font-code" id="cnt-projects">0+</div>
+                        <p class="text-[11px] text-gray-400 font-semibold uppercase">Completed Websites</p>
+                    </div>
+                    <div class="glass-panel p-4 rounded-2xl border-l-2 border-neonMagenta text-left">
+                        <div class="text-2xl font-extrabold text-neonMagenta font-code" id="cnt-clients">0%</div>
+                        <p class="text-[11px] text-gray-400 font-semibold uppercase">Client Satisfaction</p>
+                    </div>
+                    <div class="glass-panel p-4 rounded-2xl border-l-2 border-accentGreen text-left">
+                        <div class="text-2xl font-extrabold text-accentGreen font-code" id="cnt-speed">100%</div>
+                        <p class="text-[11px] text-gray-400 font-semibold uppercase">Responsive Speed</p>
+                    </div>
+                </div>
+
+                <!-- Action CTAs -->
+                <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                    <a href="#contact" class="px-8 py-4 rounded-xl bg-gradient-to-r from-neonMagenta to-neonCyan text-black font-extrabold text-sm uppercase tracking-wider hover:shadow-neon-pink transition transform hover:scale-105 flex items-center gap-3">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Start Your Project</span>
+                    </a>
+                    <a href="#estimator" class="px-8 py-4 rounded-xl glass-panel border border-white/20 text-white font-bold text-sm hover:border-neonCyan hover:text-neonCyan transition">
+                        Instant Price Calculator
+                    </a>
+                </div>
+
+                <!-- Contact Pills -->
+                <div class="pt-4 flex flex-wrap justify-center lg:justify-start gap-3 text-xs font-code">
+                    <span class="px-3 py-1.5 rounded-lg glass-panel text-gray-300 border border-white/10 flex items-center gap-2">
+                        <i class="fa-solid fa-phone text-neonCyan"></i> 03270325225 / 03177265790
+                    </span>
+                    <span class="px-3 py-1.5 rounded-lg glass-panel text-gray-300 border border-white/10 flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot text-neonMagenta"></i> Gujranwala Islam City Town
+                    </span>
+                </div>
+            </div>
+
+            <!-- Banner Poster Showcase -->
+            <div class="lg:col-span-5 flex justify-center">
+                <div class="relative group max-w-md w-full">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-neonCyan via-neonMagenta to-neonBlue rounded-2xl filter blur-lg opacity-75 group-hover:opacity-100 transition duration-1000 animate-pulse-glow"></div>
+                    
+                    <div class="relative rounded-2xl overflow-hidden border-2 border-white/20 bg-darkBg shadow-2xl">
+                        <img src="ChatGPT Image Sep 23, 2026, 08_04_50 PM.png" alt="Haseeb Abbas Web Designer" class="w-full h-auto object-cover transform transition duration-500 group-hover:scale-105" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop';">
+                        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black via-black/80 to-transparent p-6 text-center">
+                            <h3 class="font-bold text-white text-lg">Haseeb Abbas</h3>
+                            <p class="text-neonCyan text-xs font-code">Web Designer & Full-Stack Developer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 px-4 lg:px-12 bg-darkBg/80 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-neonMagenta font-code text-xs font-semibold tracking-widest uppercase">// High-Performance Solutions</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white">Full-Stack Web Design Services</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <div class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-neonCyan transition duration-300 group hover:-translate-y-2">
+                    <div class="w-12 h-12 rounded-xl bg-neonCyan/10 border border-neonCyan/30 flex items-center justify-center text-neonCyan text-xl mb-5 group-hover:bg-neonCyan group-hover:text-black transition">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-2">Business Websites</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">High-converting corporate websites tailored to establish your strong brand identity online.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-neonMagenta transition duration-300 group hover:-translate-y-2">
+                    <div class="w-12 h-12 rounded-xl bg-neonMagenta/10 border border-neonMagenta/30 flex items-center justify-center text-neonMagenta text-xl mb-5 group-hover:bg-neonMagenta group-hover:text-black transition">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-2">Custom Websites</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Tailored custom-coded web applications designed strictly according to your specific needs.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-accentGreen transition duration-300 group hover:-translate-y-2">
+                    <div class="w-12 h-12 rounded-xl bg-accentGreen/10 border border-accentGreen/30 flex items-center justify-center text-accentGreen text-xl mb-5 group-hover:bg-accentGreen group-hover:text-black transition">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-2">E-Commerce Stores</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Sell online seamlessly with safe payment integration, inventory controls, and sleek store design.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-neonBlue transition duration-300 group hover:-translate-y-2">
+                    <div class="w-12 h-12 rounded-xl bg-neonBlue/10 border border-neonBlue/30 flex items-center justify-center text-neonBlue text-xl mb-5 group-hover:bg-neonBlue group-hover:text-black transition">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-2">SEO Optimization</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Rank higher on Google search results with keyword-ready structure and fast loading times.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-blue-400 transition duration-300 group hover:-translate-y-2">
+                    <div class="w-12 h-12 rounded-xl bg-blue-400/10 border border-blue-400/30 flex items-center justify-center text-blue-400 text-xl mb-5 group-hover:bg-blue-400 group-hover:text-black transition">
+                        <i class="fa-brands fa-wordpress font-bold"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-2">WordPress Solutions</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Easy to manage, fully custom WordPress sites built for quick updates and user friendliness.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-pink-400 transition duration-300 group hover:-translate-y-2">
+                    <div class="w-12 h-12 rounded-xl bg-pink-400/10 border border-pink-400/30 flex items-center justify-center text-pink-400 text-xl mb-5 group-hover:bg-pink-400 group-hover:text-black transition">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-2">Modern UI/UX</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Clean, attractive, and engaging designs ensuring effortless navigation for your visitors.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-purple-400 transition duration-300 group hover:-translate-y-2">
+                    <div class="w-12 h-12 rounded-xl bg-purple-400/10 border border-purple-400/30 flex items-center justify-center text-purple-400 text-xl mb-5 group-hover:bg-purple-400 group-hover:text-black transition">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-2">Responsive Mobile UI</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Flawless functionality across all mobile phones, tablets, and desktop computers.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-yellow-400 transition duration-300 group hover:-translate-y-2">
+                    <div class="w-12 h-12 rounded-xl bg-yellow-400/10 border border-yellow-400/30 flex items-center justify-center text-yellow-400 text-xl mb-5 group-hover:bg-yellow-400 group-hover:text-black transition">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-white mb-2">Fast Page Speed</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Lightweight code optimization ensuring speedy site performance and lower bounce rates.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Filterable Portfolio Section -->
+    <section id="portfolio" class="py-24 px-4 lg:px-12 bg-darkBg relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                <span class="text-neonCyan font-code text-xs font-semibold tracking-widest uppercase">// Working Portfolio</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white">Click Any Project For Live Preview</h2>
+            </div>
+
+            <!-- Filter Categories -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button onclick="filterProjects('all', this)" class="port-btn active px-6 py-2.5 rounded-full glass-panel border border-neonCyan text-neonCyan text-xs font-bold transition">All Projects</button>
+                <button onclick="filterProjects('business', this)" class="port-btn px-6 py-2.5 rounded-full glass-panel border border-white/10 text-gray-400 hover:text-white text-xs font-bold transition">Business</button>
+                <button onclick="filterProjects('ecommerce', this)" class="port-btn px-6 py-2.5 rounded-full glass-panel border border-white/10 text-gray-400 hover:text-white text-xs font-bold transition">E-Commerce</button>
+                <button onclick="filterProjects('wordpress', this)" class="port-btn px-6 py-2.5 rounded-full glass-panel border border-white/10 text-gray-400 hover:text-white text-xs font-bold transition">WordPress</button>
+                <button onclick="filterProjects('custom', this)" class="port-btn px-6 py-2.5 rounded-full glass-panel border border-white/10 text-gray-400 hover:text-white text-xs font-bold transition">Custom Web</button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
+                
+                <!-- Project 1 -->
+                <div class="project-card business glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-neonCyan transition duration-300 cursor-pointer" onclick="openProjectModal('TechCorp Global Hub', 'Business Website', 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop', 'Full corporate portal with lead forms, automated appointment booking, and custom analytics dashboard.')">
+                    <div class="relative h-52 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <span class="px-5 py-2.5 rounded-full bg-neonCyan text-black font-extrabold text-xs flex items-center gap-2">
+                                <i class="fa-solid fa-eye"></i> View Live Modal
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-code text-neonCyan uppercase font-bold">Business Website</span>
+                        <h4 class="font-bold text-lg text-white mt-1">TechCorp Global Hub</h4>
+                        <p class="text-gray-400 text-xs mt-2">Enterprise level website built for rapid conversion and fast mobile load times.</p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card ecommerce glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-neonMagenta transition duration-300 cursor-pointer" onclick="openProjectModal('Urban Luxe Fashion', 'E-Commerce Store', 'https://images.unsplash.com/photo-1556742049-0a670f4a4591?q=80&w=800&auto=format&fit=crop', 'Online store featuring cart system, JazzCash/Easypaisa payment gateway mock, and product filtering.')">
+                    <div class="relative h-52 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1556742049-0a670f4a4591?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <span class="px-5 py-2.5 rounded-full bg-neonMagenta text-white font-extrabold text-xs flex items-center gap-2">
+                                <i class="fa-solid fa-eye"></i> View Live Modal
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-code text-neonMagenta uppercase font-bold">E-Commerce Store</span>
+                        <h4 class="font-bold text-lg text-white mt-1">Urban Luxe Fashion</h4>
+                        <p class="text-gray-400 text-xs mt-2">Sleek online storefront with shopping cart, filterable catalogue, and mobile checkout.</p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card custom glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-accentGreen transition duration-300 cursor-pointer" onclick="openProjectModal('CyberAnalytics SaaS App', 'Custom Web', 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop', 'Built with React and Tailwind CSS featuring dark mode, real-time data visualizer, and custom API integration.')">
+                    <div class="relative h-52 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <span class="px-5 py-2.5 rounded-full bg-accentGreen text-black font-extrabold text-xs flex items-center gap-2">
+                                <i class="fa-solid fa-eye"></i> View Live Modal
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-code text-accentGreen uppercase font-bold">Custom React App</span>
+                        <h4 class="font-bold text-lg text-white mt-1">CyberAnalytics SaaS App</h4>
+                        <p class="text-gray-400 text-xs mt-2">Advanced dashboard web application designed with real-time statistics UI.</p>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card wordpress glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-blue-400 transition duration-300 cursor-pointer" onclick="openProjectModal('Islam City Real Estate', 'WordPress', 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800&auto=format&fit=crop', 'Custom WordPress real estate portal with property search, map views, and WhatsApp inquiry buttons.')">
+                    <div class="relative h-52 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <span class="px-5 py-2.5 rounded-full bg-blue-400 text-black font-extrabold text-xs flex items-center gap-2">
+                                <i class="fa-solid fa-eye"></i> View Live Modal
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] font-code text-blue-400 uppercase font-bold">WordPress Site</span>
+                        <h4 class="font-bold text-lg text-white mt-1">Islam City Real Estate</h4>
+                        <p class="text-gray-400 text-xs mt-2">Dynamic property listing portal built for local real estate agencies in Gujranwala.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Price & Quote Calculator -->
+    <section id="estimator" class="py-24 px-4 lg:px-12 bg-darkBg/90 relative border-t border-white/5">
+        <div class="max-w-4xl mx-auto glass-panel p-8 lg:p-12 rounded-3xl cyber-border">
+            
+            <div class="text-center mb-10">
+                <span class="text-neonCyan font-code text-xs font-semibold tracking-widest uppercase">// Interactive Pricing Calculator</span>
+                <h2 class="text-3xl font-extrabold text-white mt-1">Calculate Your Project Cost Instantly</h2>
+                <p class="text-gray-400 text-xs mt-2">Adjust page sliders and add-ons to see estimated pricing in PKR.</p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Pages Slider -->
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="text-xs font-bold uppercase text-gray-300 font-code">Total Pages Required</label>
+                        <span class="text-neonCyan font-bold font-code text-sm" id="page-count-val">3 Pages</span>
+                    </div>
+                    <input type="range" id="page-slider" min="1" max="15" value="3" oninput="updateCalculator()" class="w-full accent-neonCyan cursor-pointer">
+                </div>
+
+                <!-- Web Type Dropdown -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-xs font-bold uppercase text-gray-300 font-code block mb-2">Website Architecture</label>
+                        <select id="calc-type" onchange="updateCalculator()" class="w-full bg-darkBg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:border-neonCyan outline-none">
+                            <option value="12000">Standard Business Web (Base 12,000 PKR)</option>
+                            <option value="22000">E-Commerce Store (Base 22,000 PKR)</option>
+                            <option value="30000">Custom React Web Application (Base 30,000 PKR)</option>
+                            <option value="15000">WordPress CMS Site (Base 15,000 PKR)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="text-xs font-bold uppercase text-gray-300 font-code block mb-2">Delivery Speed</label>
+                        <select id="calc-speed" onchange="updateCalculator()" class="w-full bg-darkBg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:border-neonCyan outline-none">
+                            <option value="1">Standard Speed (5-7 Days)</option>
+                            <option value="1.25">Express Delivery (2-3 Days) (+25%)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Checkbox Features -->
+                <div>
+                    <label class="text-xs font-bold uppercase text-gray-300 font-code block mb-3">Include Additional Features</label>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <label class="flex items-center gap-3 p-3 rounded-xl glass-panel border border-white/10 cursor-pointer">
+                            <input type="checkbox" id="chk-seo" onchange="updateCalculator()" value="4000" class="accent-neonCyan">
+                            <span class="text-xs text-gray-300">SEO Keyword Setup (+4k)</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 rounded-xl glass-panel border border-white/10 cursor-pointer">
+                            <input type="checkbox" id="chk-speed" onchange="updateCalculator()" value="3000" class="accent-neonCyan">
+                            <span class="text-xs text-gray-300">Fast Speed Shield (+3k)</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 rounded-xl glass-panel border border-white/10 cursor-pointer">
+                            <input type="checkbox" id="chk-whatsapp" onchange="updateCalculator()" value="2000" class="accent-neonCyan" checked>
+                            <span class="text-xs text-gray-300">WhatsApp Integration (+2k)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Calculated Price Summary -->
+                <div class="pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+                    <div>
+                        <span class="text-xs text-gray-400 font-code uppercase">Estimated Budget:</span>
+                        <div id="calc-total" class="text-4xl font-extrabold text-neonCyan">PKR 18,000</div>
+                    </div>
+                    <button onclick="sendCalculatedQuote()" class="px-8 py-4 rounded-xl bg-gradient-to-r from-accentGreen to-neonCyan text-black font-extrabold text-xs uppercase tracking-wider hover:shadow-neon-cyan transition flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Order This Quote On WhatsApp</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Client Interactive Web Tools -->
+    <section id="tools" class="py-24 px-4 lg:px-12 bg-darkBg relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto space-y-16">
+            
+            <div class="text-center max-w-3xl mx-auto space-y-3">
+                <span class="text-neonMagenta font-code text-xs font-semibold tracking-widest uppercase">// Interactive Tools</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white">Client Interactive Playground</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <!-- Tool 1: Speed Benchmark Simulator -->
+                <div class="glass-panel p-8 rounded-3xl border border-white/10 space-y-6">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-bold text-lg text-white">Page Speed Comparison Simulator</h3>
+                        <span class="text-xs font-code text-neonCyan">Live Test</span>
+                    </div>
+                    <p class="text-xs text-gray-400">Run a simulated Google PageSpeed benchmark comparing standard templates vs Haseeb's custom optimized code.</p>
+
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span>Standard Templates Speed Score</span>
+                                <span class="text-red-400 font-bold" id="score-old">52 / 100</span>
+                            </div>
+                            <div class="w-full bg-darkBg rounded-full h-3 overflow-hidden">
+                                <div id="bar-old" class="bg-red-500 h-full transition-all duration-1000" style="width: 52%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span>Haseeb Abbas Optimized Speed Score</span>
+                                <span class="text-accentGreen font-bold" id="score-new">99 / 100</span>
+                            </div>
+                            <div class="w-full bg-darkBg rounded-full h-3 overflow-hidden">
+                                <div id="bar-new" class="bg-accentGreen h-full transition-all duration-1000" style="width: 99%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="runSpeedSimulation()" class="w-full py-3 rounded-xl glass-panel border border-neonCyan text-neonCyan font-bold text-xs hover:bg-neonCyan hover:text-black transition">
+                        Re-run Benchmark Simulation
+                    </button>
+                </div>
+
+                <!-- Tool 2: Color Palette Generator -->
+                <div class="glass-panel p-8 rounded-3xl border border-white/10 space-y-6">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-bold text-lg text-white">Brand Color Scheme Generator</h3>
+                        <span class="text-xs font-code text-neonMagenta">Design Tool</span>
+                    </div>
+                    <p class="text-xs text-gray-400">Generate fresh brand color palette inspirations for your upcoming website project.</p>
+
+                    <div class="grid grid-cols-4 gap-2 h-24 rounded-2xl overflow-hidden p-1 bg-darkBg" id="palette-box">
+                        <div class="bg-[#00f2fe] rounded-lg flex items-end p-2 text-[10px] text-black font-bold font-code">#00F2FE</div>
+                        <div class="bg-[#ff007f] rounded-lg flex items-end p-2 text-[10px] text-white font-bold font-code">#FF007F</div>
+                        <div class="bg-[#101625] rounded-lg flex items-end p-2 text-[10px] text-white font-bold font-code">#101625</div>
+                        <div class="bg-[#00e676] rounded-lg flex items-end p-2 text-[10px] text-black font-bold font-code">#00E676</div>
+                    </div>
+
+                    <button onclick="generateRandomPalette()" class="w-full py-3 rounded-xl glass-panel border border-neonMagenta text-neonMagenta font-bold text-xs hover:bg-neonMagenta hover:text-white transition">
+                        Generate New Color Scheme
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Interactive FAQs Accordion -->
+    <section id="faq" class="py-24 px-4 lg:px-12 bg-darkBg/90 relative border-t border-white/5">
+        <div class="max-w-4xl mx-auto space-y-12">
+            
+            <div class="text-center space-y-3">
+                <span class="text-neonCyan font-code text-xs font-semibold tracking-widest uppercase">// Frequently Asked Questions</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white">Got Questions?</h2>
+            </div>
+
+            <div class="space-y-4">
+                
+                <div class="glass-panel rounded-2xl border border-white/10 overflow-hidden">
+                    <button onclick="toggleFaq('faq-1')" class="w-full p-5 text-left font-bold text-white flex justify-between items-center text-sm">
+                        <span>How fast can my website be delivered?</span>
+                        <i class="fa-solid fa-chevron-down text-neonCyan transition" id="icon-faq-1"></i>
+                    </button>
+                    <div id="faq-1" class="hidden p-5 pt-0 text-xs text-gray-300 border-t border-white/5 leading-relaxed">
+                        Standard business landing pages are usually delivered within 3 to 5 working days. Custom React applications or large E-Commerce stores take around 7 to 10 days depending on client requirements.
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-2xl border border-white/10 overflow-hidden">
+                    <button onclick="toggleFaq('faq-2')" class="w-full p-5 text-left font-bold text-white flex justify-between items-center text-sm">
+                        <span>Do you provide Domain and Hosting support in Pakistan?</span>
+                        <i class="fa-solid fa-chevron-down text-neonCyan transition" id="icon-faq-2"></i>
+                    </button>
+                    <div id="faq-2" class="hidden p-5 pt-0 text-xs text-gray-300 border-t border-white/5 leading-relaxed">
+                        Yes! Full assistance for domain registration (.com, .pk) and high-speed hosting setup is provided, along with SSL security certificates.
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-2xl border border-white/10 overflow-hidden">
+                    <button onclick="toggleFaq('faq-3')" class="w-full p-5 text-left font-bold text-white flex justify-between items-center text-sm">
+                        <span>Will my website work smoothly on all mobile phones?</span>
+                        <i class="fa-solid fa-chevron-down text-neonCyan transition" id="icon-faq-3"></i>
+                    </button>
+                    <div id="faq-3" class="hidden p-5 pt-0 text-xs text-gray-300 border-t border-white/5 leading-relaxed">
+                        100%! Every website is built mobile-first using Tailwind CSS, ensuring pixel-perfect layout and fast responsiveness on mobile, tablet, and desktop screens.
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Functional Contact Section -->
+    <section id="contact" class="py-24 px-4 lg:px-12 bg-darkBg relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <span class="text-neonMagenta font-code text-xs font-semibold tracking-widest uppercase">// Direct Contact</span>
+                        <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-1">Let's Discuss Your Project</h2>
+                        <p class="text-gray-400 text-sm mt-3">Send your details directly to my WhatsApp to receive an instant consultation and price estimate.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="glass-panel p-5 rounded-2xl flex items-center gap-4 border border-white/10">
+                            <div class="w-12 h-12 rounded-xl bg-neonCyan/10 border border-neonCyan/30 flex items-center justify-center text-neonCyan text-xl">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-xs text-gray-400 uppercase font-code">Designer</h5>
+                                <p class="text-white font-bold text-base">Haseeb Abbas</p>
+                            </div>
+                        </div>
+
+                        <div class="glass-panel p-5 rounded-2xl flex items-center gap-4 border border-white/10">
+                            <div class="w-12 h-12 rounded-xl bg-accentGreen/10 border border-accentGreen/30 flex items-center justify-center text-accentGreen text-xl">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-xs text-gray-400 uppercase font-code">WhatsApp / Phone</h5>
+                                <p class="text-white font-bold text-base">03270325225 / 03177265790</p>
+                            </div>
+                        </div>
+
+                        <div class="glass-panel p-5 rounded-2xl flex items-center gap-4 border border-white/10">
+                            <div class="w-12 h-12 rounded-xl bg-neonMagenta/10 border border-neonMagenta/30 flex items-center justify-center text-neonMagenta text-xl">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-xs text-gray-400 uppercase font-code">Location Address</h5>
+                                <p class="text-white font-bold text-base">Gujranwala Islam City Town, Pakistan</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Functional Contact Form -->
+                <div class="lg:col-span-7">
+                    <form id="contact-form" onsubmit="handleContactSubmit(event)" class="glass-panel p-8 rounded-3xl border border-white/10 space-y-5">
+                        <h3 class="text-xl font-bold text-white mb-2">Send Order Inquiry</h3>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="text-xs text-gray-300 font-code block mb-1">Your Full Name *</label>
+                                <input type="text" id="contact-name" required placeholder="Muhammad Ali" class="w-full bg-darkBg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:border-neonCyan outline-none">
+                            </div>
+                            <div>
+                                <label class="text-xs text-gray-300 font-code block mb-1">Phone / WhatsApp Number *</label>
+                                <input type="tel" id="contact-phone" required placeholder="03001234567" class="w-full bg-darkBg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:border-neonCyan outline-none">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="text-xs text-gray-300 font-code block mb-1">Select Required Service</label>
+                            <select id="contact-service" class="w-full bg-darkBg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:border-neonCyan outline-none">
+                                <option value="Business Website">Business Website</option>
+                                <option value="E-Commerce Store">E-Commerce Store</option>
+                                <option value="Custom React App">Custom React App</option>
+                                <option value="WordPress Website">WordPress Website</option>
+                                <option value="SEO & Speed Optimization">SEO & Speed Optimization</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="text-xs text-gray-300 font-code block mb-1">Project Message Details *</label>
+                            <textarea id="contact-msg" rows="4" required placeholder="Explain your website features or business requirements..." class="w-full bg-darkBg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:border-neonCyan outline-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-accentGreen to-neonCyan text-black font-extrabold text-sm uppercase tracking-wider hover:shadow-neon-cyan transition duration-300 flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>Send Message via WhatsApp</span>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Interactive Project Modal Popup -->
+    <div id="project-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="glass-panel max-w-2xl w-full rounded-3xl border border-white/20 p-6 lg:p-8 space-y-6 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeProjectModal()" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 text-white hover:bg-neonMagenta transition flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div>
+                <span id="modal-category" class="text-xs font-code text-neonCyan uppercase font-bold">Category</span>
+                <h3 id="modal-title" class="text-2xl font-extrabold text-white">Project Title</h3>
+            </div>
+
+            <div class="h-64 rounded-2xl overflow-hidden border border-white/10">
+                <img id="modal-img" src="" class="w-full h-full object-cover">
+            </div>
+
+            <p id="modal-desc" class="text-xs text-gray-300 leading-relaxed">Detailed description of project...</p>
+
+            <div class="pt-4 border-t border-white/10 flex justify-end gap-3">
+                <button onclick="closeProjectModal()" class="px-5 py-2.5 rounded-xl glass-panel text-white text-xs font-bold">Close</button>
+                <a href="#contact" onclick="closeProjectModal()" class="px-5 py-2.5 rounded-xl bg-neonCyan text-black text-xs font-extrabold">Order Similar Project</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* =========================================================
+           1. ANIMATED COUNTERS FOR STATS
+        ========================================================= */
+        function animateCounter(id, start, end, duration, suffix) {
+            let obj = document.getElementById(id);
+            let current = start;
+            let range = end - start;
+            let increment = end > start ? 1 : -1;
+            let stepTime = Math.abs(Math.floor(duration / range));
+            
+            let timer = setInterval(function() {
+                current += increment;
+                obj.innerText = current + suffix;
+                if (current == end) {
+                    clearInterval(timer);
+                }
+            }, stepTime);
+        }
+
+        window.onload = function() {
+            animateCounter("cnt-projects", 0, 85, 2000, "+");
+            animateCounter("cnt-clients", 0, 100, 2000, "%");
+            animateCounter("cnt-speed", 0, 99, 2000, "%");
+            updateCalculator();
+        };
+
+        /* =========================================================
+           2. THEME SWITCHER (NEON DARK / LIGHT)
+        ========================================================= */
+        function toggleTheme() {
+            const root = document.getElementById('body-root');
+            const icon = document.getElementById('theme-icon');
+            
+            root.classList.toggle('light-mode');
+            if(root.classList.contains('light-mode')) {
+                icon.className = "fa-solid fa-sun text-sm text-yellow-500";
+            } else {
+                icon.className = "fa-solid fa-moon text-sm text-neonCyan";
+            }
+        }
+
+        /* =========================================================
+           3. PORTFOLIO FILTER & MODAL
+        ========================================================= */
+        function filterProjects(cat, btn) {
+            const cards = document.querySelectorAll('.project-card');
+            const btns = document.querySelectorAll('.port-btn');
+
+            btns.forEach(b => {
+                b.classList.remove('border-neonCyan', 'text-neonCyan');
+                b.classList.add('border-white/10', 'text-gray-400');
+            });
+
+            btn.classList.remove('border-white/10', 'text-gray-400');
+            btn.classList.add('border-neonCyan', 'text-neonCyan');
+
+            cards.forEach(card => {
+                if(cat === 'all' || card.classList.contains(cat)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function openProjectModal(title, category, img, desc) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-category').innerText = category;
+            document.getElementById('modal-img').src = img;
+            document.getElementById('modal-desc').innerText = desc;
+            
+            const modal = document.getElementById('project-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeProjectModal() {
+            const modal = document.getElementById('project-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        /* =========================================================
+           4. PRICE CALCULATOR LOGIC
+        ========================================================= */
+        function updateCalculator() {
+            const pages = parseInt(document.getElementById('page-slider').value);
+            document.getElementById('page-count-val').innerText = pages + " Pages";
+
+            const baseArchitecture = parseInt(document.getElementById('calc-type').value);
+            const speedMultiplier = parseFloat(document.getElementById('calc-speed').value);
+            
+            let pageCost = (pages - 1) * 2000;
+            let addons = 0;
+
+            if(document.getElementById('chk-seo').checked) addons += parseInt(document.getElementById('chk-seo').value);
+            if(document.getElementById('chk-speed').checked) addons += parseInt(document.getElementById('chk-speed').value);
+            if(document.getElementById('chk-whatsapp').checked) addons += parseInt(document.getElementById('chk-whatsapp').value);
+
+            let total = (baseArchitecture + pageCost + addons) * speedMultiplier;
+            document.getElementById('calc-total').innerText = "PKR " + Math.round(total).toLocaleString();
+        }
+
+        function sendCalculatedQuote() {
+            const total = document.getElementById('calc-total').innerText;
+            const pages = document.getElementById('page-slider').value;
+            const msg = `Hello Haseeb Abbas, I generated a quote on your website: Total Pages: ${pages}, Total Budget: ${total}. I would like to place an order!`;
+            window.open(`https://wa.me/923270325225?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        /* =========================================================
+           5. INTERACTIVE CLIENT TOOLS
+        ========================================================= */
+        function runSpeedSimulation() {
+            const barOld = document.getElementById('bar-old');
+            const scoreOld = document.getElementById('score-old');
+            
+            barOld.style.width = '20%';
+            scoreOld.innerText = 'Calculating...';
+
+            setTimeout(() => {
+                barOld.style.width = '52%';
+                scoreOld.innerText = '52 / 100';
+                showToast('Page Speed Benchmark Complete!');
+            }, 800);
+        }
+
+        function generateRandomPalette() {
+            const colors = [
+                ['#00f2fe', '#ff007f', '#101625', '#00e676'],
+                ['#7928CA', '#FF0080', '#0070F3', '#111111'],
+                ['#F59E0B', '#EF4444', '#1E293B', '#10B981'],
+                ['#06B6D4', '#3B82F6', '#0F172A', '#8B5CF6']
+            ];
+
+            const rand = colors[Math.floor(Math.random() * colors.length)];
+            const box = document.getElementById('palette-box');
+            box.innerHTML = `
+                <div style="background:${rand[0]}" class="rounded-lg flex items-end p-2 text-[10px] text-black font-bold font-code">${rand[0]}</div>
+                <div style="background:${rand[1]}" class="rounded-lg flex items-end p-2 text-[10px] text-white font-bold font-code">${rand[1]}</div>
+                <div style="background:${rand[2]}" class="rounded-lg flex items-end p-2 text-[10px] text-white font-bold font-code">${rand[2]}</div>
+                <div style="background:${rand[3]}" class="rounded-lg flex items-end p-2 text-[10px] text-black font-bold font-code">${rand[3]}</div>
+            `;
+        }
+
+        /* =========================================================
+           6. FAQ TOGGLE
+        ========================================================= */
+        function toggleFaq(id) {
+            const faq = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            
+            if(faq.classList.contains('hidden')) {
+                faq.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                faq.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        /* =========================================================
+           7. CONTACT FORM SUBMIT & SECURITY SHIELD
+        ========================================================= */
+        function sanitizeInput(str) {
+            return str.replace(/[&<>"']/g, function(m) {
+                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m];
+            });
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const name = sanitizeInput(document.getElementById('contact-name').value);
+            const phone = sanitizeInput(document.getElementById('contact-phone').value);
+            const service = document.getElementById('contact-service').value;
+            const msg = sanitizeInput(document.getElementById('contact-msg').value);
+
+            const text = `*New Web Inquiry*\n*Name:* ${name}\n*Phone:* ${phone}\n*Service:* ${service}\n*Message:* ${msg}`;
+            window.open(`https://wa.me/923270325225?text=${encodeURIComponent(text)}`, '_blank');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('security-toast');
+            document.getElementById('toast-message').innerText = msg;
+            toast.classList.remove('translate-y-32', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-32', 'opacity-0');
+                toast.classList.remove('translate-y-0', 'opacity-100');
+            }, 2500);
+        }
+
+        // Anti Right-Click Protection
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            showToast("Right-click context menu is locked.");
+        });
+
+        // Anti DevTools Key Combination Protection
+        document.addEventListener('keydown', function(e) {
+            if(e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && e.keyCode === 85)) {
+                e.preventDefault();
+                showToast("Developer options restricted.");
+            }
+        });
+    </script>
+</body>
+</html>
